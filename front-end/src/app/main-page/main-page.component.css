@@ -1,0 +1,7 @@
+img {
+ font-size: 2em;
+}
+
+td:first-letter {
+    text-transform: capitalize;
+}

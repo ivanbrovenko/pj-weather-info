@@ -1,0 +1,7 @@
+img {
+    height:32px;
+    position: relative;
+}
+.sr-only {
+  text-color: white;
+}

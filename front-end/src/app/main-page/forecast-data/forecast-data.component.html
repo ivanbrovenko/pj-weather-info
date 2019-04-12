@@ -1,0 +1,43 @@
+<h1>Выберите интересующий Вас город. Если нужный город отсуствует в списке, добавьте его нажав на "Add City"</h1>
+  <div class="form-group">
+   <select class="form-control col-2" #status="ngModel" [(ngModel)]="City" name="cityInfo" (change)="forecast()">
+     <option [ngValue]="undefined" disabled selected>Выбор города</option>
+     <option *ngFor="let cityinfo of cities" [ngValue]=cityinfo>{{cityinfo.city_name}}</option>
+   </select>
+  </div>
+<div *ngIf="City">
+  <div class="container">
+  <table class="table table-light table-bordered">
+    <thead>
+      <tr>
+          <th>City</th>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Clouds</th>
+          <th>Cloudiness</th>
+          <th>Min temperature</th>
+          <th>Max temperature</th>
+          <th>Wind</th>
+          <th>Humidity</th>
+          <th>Pressure</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let weatherinfo of weathers?.list">
+      <tr>
+        <td>{{weathers?.city?.name}}, {{weathers?.city?.country}}</td>
+        <td>{{weatherinfo?.dt_txt | date: 'MMMM dd'}}</td>
+        <td>{{weatherinfo?.dt_txt | date: 'HH:mm'}}</td>
+        <td><img src="http://openweathermap.org/img/w/{{weatherinfo?.weather[0].icon}}.png"></td>
+        <td>{{weatherinfo?.clouds?.all}} %</td>
+        <td>{{weatherinfo?.weather[0].description}}</td>
+        <td>{{weatherinfo?.main?.temp_min}} &#176;С</td>
+        <td>{{weatherinfo?.main?.temp_max}} &#176;С</td>
+        <td>{{weatherinfo?.wind?.speed}} m/s</td>
+        <td>{{weatherinfo?.main?.humidity}} %</td>
+        <td>{{weatherinfo?.main?.pressure}} hpa</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<p class="h5" align="right">Today is {{today | date:'fullDate'}}</p>
+<div *ngIf="router.url === '/main-page'" class="current">
+  <div *ngFor="let weather of weathers1?.weather">
+    <h1 style="text-align: center">Current weather in {{weathers1?.name}}, {{weathers1?.sys?.country}}</h1>
+    <h2 style="text-align: center"><img src="http://openweathermap.org/img/w/{{weather?.icon}}.png">{{current_temp}} &#176;С</h2>
+    <div class="container">
+      <table class="table table-bordered" style="text-align: center">
+        <thead>
+          <tr>
+            <th>Cloudiness</th>
+            <th>Wind</th>
+            <th>Clouds</th>
+            <th>Humidity</th>
+            <th>Pressure</th>
+            <th>Wind degrees</th>
+            <th>Geo coords</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{weather?.description}}</td>
+            <td>{{weathers1?.wind?.speed}} m/s</td>
+            <td>{{weathers1?.clouds?.all}} %</td>
+            <td>{{weathers1?.main?.humidity}} %</td>
+            <td>{{weathers1?.main?.pressure}} hpa</td>
+            <td>{{degrees}}</td>
+            <td style="color: red">[{{coord_lat}}, {{weathers1?.coord?.lon}}]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="router.url === '/main-page'" class="forecast">
+  <div>
+      <h1 style="text-align: center">Forecast weather in {{weathers2?.city?.name}}, {{weathers2?.city?.country}}</h1>
+    <div class="container">
+    <table class="table table-bordered" style="text-align: center">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Cloudiness</th>
+            <th>Clouds</th>
+            <th>Temperature</th>
+            <th>Wind</th>
+            <th>Humidity</th>
+            <th>Pressure</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let weather1 of weathers2?.list">
+          <tr>
+            <td>{{weather1?.dt_txt | date: 'MMMM, d'}}</td>
+            <td>{{weather1?.dt_txt | date: 'HH:mm'}}</td>
+            <td><img src="http://openweathermap.org/img/w/{{weather1?.weather[0].icon}}.png"></td>
+            <td>{{weather1?.weather[0].description}}</td>
+            <td>{{weather1?.clouds?.all}} %</td>
+            <td>{{weather1?.main?.temp_max}} &#176;С</td>
+            <td>{{weather1?.wind?.speed}} m/s</td>
+            <td>{{weather1?.main?.humidity}} %</td>
+            <td>{{weather1?.main?.pressure}} hpa</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+
+
+

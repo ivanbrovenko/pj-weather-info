@@ -1,0 +1,8 @@
+<h1> </h1>
+<h4>Удалить ненужный Вам город или удалить неправильно названный город</h4>
+  <div *ngFor="let cityinfo of cities">
+    <div class="card card-body" style="max-width: 50rem; width: 420px;height: 150px; margin: 0 auto">
+      <h4 class="card-title">{{cityinfo.city_name}}</h4>
+      <button class="btn btn-danger" type="submit" (click)="onDelete(cityinfo._id)">DELETE</button>
+    </div>
+  </div>

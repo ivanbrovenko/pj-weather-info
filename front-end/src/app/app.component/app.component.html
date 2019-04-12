@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+  <a class="navbar-brand h1" routerLink="/"><img src="../../favicon.ico">   Weather Info</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link h5" routerLink="main-page" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h5" [routerLink]="['./main-page/add-city']" routerLinkActive="active">Cities</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h5" [routerLink]="['./main-page/forecast-data']" routerLinkActive="active">Forecast data</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmit()">
+      <input class="form-control mr-sm-2" type="search" [(ngModel)]="city.city_name" placeholder="Add new city" [ngModelOptions]="{standalone: true}" aria-label="Search">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Add</button>
+    </form>
+  </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
