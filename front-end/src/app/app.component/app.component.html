@@ -7,9 +7,6 @@
         <a class="nav-link h5" routerLink="main-page" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link h5" [routerLink]="['./main-page/add-city']" routerLinkActive="active">Cities</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link h5" [routerLink]="['./main-page/forecast-data']" routerLinkActive="active">Forecast data</a>
       </li>
     </ul>
@@ -20,4 +17,10 @@
   </div>
   </div>
 </nav>
+<div [hidden]="!successMessage" class="alert alert-success" role="alert" style="text-align: center">
+  <h4>{{ message }}</h4>
+</div>
+<div [hidden]="!errorMessage" class="alert alert-danger" role="alert" style="text-align: center">
+  <h4>{{ message }}</h4>
+</div>
 <router-outlet></router-outlet>

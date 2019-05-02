@@ -13,7 +13,6 @@ import { AppComponent } from './app.component/app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ForecastDataComponent } from './main-page/forecast-data/forecast-data.component';
-import { AddCityComponent } from './main-page/add-city/add-city.component';
 import { OrderByPipe } from './main-page/order-by-pipe';
 
 @NgModule({
@@ -22,8 +21,7 @@ import { OrderByPipe } from './main-page/order-by-pipe';
     MainPageComponent,
     NotFoundComponent,
     ForecastDataComponent,
-    OrderByPipe,
-    AddCityComponent
+    OrderByPipe
   ],
   imports: [
     BsDropdownModule.forRoot(),

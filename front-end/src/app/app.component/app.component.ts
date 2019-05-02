@@ -10,17 +10,28 @@ import { AppService } from "../services/app.service";
 })
 export class AppComponent {
 
-  city: any = {};
+  public city: any = {};
+  public message: string;
+  public successMessage: boolean = false;
+  public errorMessage: boolean = false;
 
 constructor(private router: Router, private route: ActivatedRoute, private addcity: AppService) {
   setTheme('bs4');
  }
 
   onSubmit() {
-    this.addcity.addCity(this.city)
-      .subscribe(res => {
-        console.log(res);
-        this.city = '';
+    this.addcity.addNewCity(this.city)
+      .subscribe((res: any) => {
+        if(res.status === 200) {
+          this.successMessage = true;
+          this.message = res.msg;
+          setTimeout(() => this.successMessage = false, 3000);
+        } else if (res.status === 404) {
+          this.errorMessage = true;
+          this.message = res.msg;
+          setTimeout(() => this.errorMessage = false, 3000);
+        }
+        this.city.length = 0;
       }, err => {
         console.error(err);
       })

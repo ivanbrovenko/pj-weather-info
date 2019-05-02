@@ -1,11 +1,4 @@
-<h1>Выберите интересующий Вас город. Если нужный город отсуствует в списке, добавьте его нажав на "Add City"</h1>
-  <div class="form-group">
-   <select class="form-control col-2" #status="ngModel" [(ngModel)]="City" name="cityInfo" (change)="forecast()">
-     <option [ngValue]="undefined" disabled selected>Выбор города</option>
-     <option *ngFor="let cityinfo of cities" [ngValue]=cityinfo>{{cityinfo.city_name}}</option>
-   </select>
-  </div>
-<div *ngIf="City">
+<div *ngIf="weathers.length !== 0">
   <div class="container">
   <table class="table table-light table-bordered">
     <thead>
