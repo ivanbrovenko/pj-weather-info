@@ -7,7 +7,7 @@ const logger = require('morgan');
 const apiCity = require('./routes/city_data');
 const getInfoForCurrentPosition = require('./routes/current-position-weater');
 const compression = require('compression');
-require('dotenv/config');
+require('dotenv').config();
 
 const app = express();
 
