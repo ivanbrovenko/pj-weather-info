@@ -20,7 +20,7 @@ export class MainPageComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor(private weather: AppService, private route: ActivatedRoute, private router: Router) {  }
+  constructor(private weather: AppService, private router: Router) {  }
 
   ngOnInit() {
     if(navigator.geolocation) {
