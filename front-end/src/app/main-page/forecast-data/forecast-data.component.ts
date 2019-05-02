@@ -25,7 +25,6 @@ export class ForecastDataComponent implements OnInit {
   forecast() {
     this.weather.getForecast()
     .subscribe((res: any) => {
-      console.log(res);
       this.weathers = res;
     }, err => {
       console.error(err);
