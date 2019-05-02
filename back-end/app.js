@@ -4,10 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const mongoose = require('mongoose');
 const apiCity = require('./routes/city_data');
 const getInfoForCurrentPosition = require('./routes/current-position-weater');
 const compression = require('compression');
+require('dotenv/config');
 
 const app = express();
 
@@ -25,12 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api-city', apiCity);
 app.use('/current-position', getInfoForCurrentPosition);
 
-// let frontDir = path.join(__dirname, '..', 'dist');
-// global.frontDir = frontDir;
-// app.use(express.static(frontDir));
+let frontDir = path.join(__dirname, '..', 'dist');
+global.frontDir = frontDir;
+app.use(express.static(frontDir));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'dist','index.html'));
+  res.sendFile(path.join(frontDir+'/index.html'));
   console.log("Connected");
 });
 
@@ -50,4 +50,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+<<<<<<< HEAD
 app.listen(process.env.PORT, () => console.log('http://localhost:3000'));
+=======
+app.listen(process.env.PORT, () => console.log('Server started successfully'));
+>>>>>>> 0ea2fc0389bccf1d937c4c0e54ed7928f1c6d79c
