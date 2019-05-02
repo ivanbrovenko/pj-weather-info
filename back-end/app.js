@@ -25,12 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api-city', apiCity);
 app.use('/current-position', getInfoForCurrentPosition);
 
-let frontDir = path.join(__dirname, '..', 'dist');
-global.frontDir = frontDir;
-app.use(express.static(frontDir));
+// let frontDir = path.join(__dirname, '..', 'dist');
+// global.frontDir = frontDir;
+// app.use(express.static(frontDir));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(global.frontDir + '/index.html'));
+  res.sendFile(path.join(__dirname, 'dist','index.html'));
   console.log("Connected");
 });
 
