@@ -10,7 +10,7 @@
         <a class="nav-link h5" [routerLink]="['./main-page/forecast-data']" routerLinkActive="active">Forecast data</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmit()">
+    <form id="addCityForm" class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmit()">
       <input class="form-control mr-sm-2" type="search" [(ngModel)]="city.city_name" placeholder="Add new city" [ngModelOptions]="{standalone: true}" aria-label="Search">
       <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Add</button>
     </form>

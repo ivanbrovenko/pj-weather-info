@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/index';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
-const url = 'http://localhost:3000';
-
-const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  };
+const url = environment.url;
 
 @Injectable()
 export class AppService {
-  subject = new BehaviorSubject({});
 
   constructor(private http: HttpClient) {
   }
@@ -26,7 +21,7 @@ export class AppService {
         `body was: ${error.error}`);
     }
     return throwError('Something bad happened; please try again later.');
-  };
+  }
 
   getCurrent(data: { lat: number, lng: number }) {
     const options = data ?
@@ -49,14 +44,14 @@ export class AppService {
   getForecast(): Observable<any> {
     return this.http.get(`${url}/current-position/get-weather-by-city`).pipe(
       catchError(this.handleError)
-    )
+    );
   }
 
   addNewCity(city) {
     return this.http.post(`${url}/api-city/add-city`, city)
       .pipe(
         catchError(this.handleError)
-      )
+      );
   }
 }
 

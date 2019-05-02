@@ -6,7 +6,6 @@ const express = require('express'),
 router.get('/weather-data', async (req, res) => {
     await request.get(`https://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lng}&APPID=c308d9f307529fb075e0920a02f8ff75&units=metric`,
         { json: true }, (err, response, body) => {
-            console.log(body);
             res.json(body);
     });
 });

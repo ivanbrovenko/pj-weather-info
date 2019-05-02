@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { setTheme } from 'ngx-bootstrap/utils';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppService } from "../services/app.service";
+import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,8 @@ constructor(private router: Router, private route: ActivatedRoute, private addci
   onSubmit() {
     this.addcity.addNewCity(this.city)
       .subscribe((res: any) => {
-        if(res.status === 200) {
+        document.forms['addCityForm'].reset();
+        if (res.status === 200) {
           this.successMessage = true;
           this.message = res.msg;
           setTimeout(() => this.successMessage = false, 3000);
