@@ -50,8 +50,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-<<<<<<< HEAD
-app.listen(process.env.PORT, () => console.log('http://localhost:3000'));
-=======
 app.listen(process.env.PORT, () => console.log('Server started successfully'));
->>>>>>> 0ea2fc0389bccf1d937c4c0e54ed7928f1c6d79c
