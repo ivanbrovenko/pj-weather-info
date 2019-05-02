@@ -4,10 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const mongoose = require('mongoose');
 const apiCity = require('./routes/city_data');
 const getInfoForCurrentPosition = require('./routes/current-position-weater');
 const compression = require('compression');
+require('dotenv/config');
 
 const app = express();
 
@@ -50,4 +50,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, () => console.log('http://localhost:3000'));
+app.listen(process.env.PORT, () => console.log('Server started successfully'));
