@@ -6,13 +6,10 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const apiCity = require('./routes/city_data');
+const getInfoForCurrentPosition = require('./routes/current-position-weater');
 const compression = require('compression');
 
 const app = express();
-
-mongoose.connect('mongodb://localhost:27017/weather', { useNewUrlParser: true })
-  .then(() =>  console.log('connection successful'))
-  .catch((err) => console.error(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api-city', apiCity);
+app.use('/current-position', getInfoForCurrentPosition);
 
 let frontDir = path.join(__dirname, '..', 'dist');
 global.frontDir = frontDir;

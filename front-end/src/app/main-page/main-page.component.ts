@@ -24,7 +24,6 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     if(navigator.geolocation) {
-      console.log('11111');
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
@@ -37,11 +36,10 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  current() {
-    this.weather.getCurrent(this.lat, this.lng)
-    .subscribe(res => {
+  private current() {
+    this.weather.getCurrent( { lat: this.lat, lng: this.lng })
+    .subscribe((res: any) => {
       this.weathers1 = res;
-      console.log(this.weathers1);
       this.current_temp = Math.round(res.main.temp);
       this.coord_lat = Math.round(res.coord.lat);
       this.coord_lng = Math.round(res.coord.lon);
@@ -61,12 +59,13 @@ export class MainPageComponent implements OnInit {
       console.error(err);
     });
   }
-  forecastcoords() {
-    this.weather.getForecastCoords(this.lat, this.lng)
-    .subscribe(res => {
-      this.weathers2 = res;
-    }, err => {
-      console.error(err);
+
+  private forecastcoords() {
+    this.weather.getForecastData({ lat: this.lat, lng: this.lng })
+      .subscribe((res: any) => {
+        this.weathers2 = res;
+        }, err => {
+        console.error(err);
     })
   }
 }

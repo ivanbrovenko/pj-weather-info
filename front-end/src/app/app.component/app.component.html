@@ -7,17 +7,20 @@
         <a class="nav-link h5" routerLink="main-page" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link h5" [routerLink]="['./main-page/add-city']" routerLinkActive="active">Cities</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link h5" [routerLink]="['./main-page/forecast-data']" routerLinkActive="active">Forecast data</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmit()">
+    <form id="addCityForm" class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmit()">
       <input class="form-control mr-sm-2" type="search" [(ngModel)]="city.city_name" placeholder="Add new city" [ngModelOptions]="{standalone: true}" aria-label="Search">
       <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Add</button>
     </form>
   </div>
   </div>
 </nav>
+<div [hidden]="!successMessage" class="alert alert-success" role="alert" style="text-align: center">
+  <h4>{{ message }}</h4>
+</div>
+<div [hidden]="!errorMessage" class="alert alert-danger" role="alert" style="text-align: center">
+  <h4>{{ message }}</h4>
+</div>
 <router-outlet></router-outlet>

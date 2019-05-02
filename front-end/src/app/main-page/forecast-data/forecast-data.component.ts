@@ -9,9 +9,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./forecast-data.component.css']
 })
 export class ForecastDataComponent implements OnInit {
-
-  City: any;
-  cities: any = [];
   weathers: any = {};
 
   formGroup: FormGroup;
@@ -19,20 +16,15 @@ export class ForecastDataComponent implements OnInit {
   constructor(private weather: AppService, private router: Router, private route: ActivatedRoute) {  }
 
   ngOnInit() {
-    this.weather.getCity()
-    .subscribe(res => {
-      this.cities = res;
-    }, err => {
-      console.error(err)
-    });
+    this.forecast();
     this.formGroup = new FormGroup({
       city_name: new FormControl('', Validators.required)
     })
   }
 
   forecast() {
-    this.weather.getForecast(this.City.city_name)
-    .subscribe(res => {
+    this.weather.getForecast()
+    .subscribe((res: any) => {
       console.log(res);
       this.weathers = res;
     }, err => {
